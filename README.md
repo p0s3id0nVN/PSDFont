@@ -1,31 +1,31 @@
 # iFont
 
-纯浏览器端 iOS 18~26 字体转换工具。无需安装，无需上传，所有处理在本地完成。
+Công cụ chuyển đổi phông chữ iOS 18~26 thuần túy trên trình duyệt. Không cần cài đặt, không cần tải lên, tất cả xử lý được hoàn thành cục bộ.
 
-## 功能
+## Tính năng
 
-- 支持 TTF / OTF / TTC 输入，输出 iOS 兼容的 TTC 格式
-- 批量转换，多文件自动打包 ZIP 下载
-- 三种字重映射模式可选
-- 移动端 Safari 适配，后台转换不中断
-- 极简黑白 UI，终端风格日志
+- Hỗ trợ đầu vào TTF / OTF / TTC, xuất định dạng TTC tương thích với iOS
+- Chuyển đổi hàng loạt, tự động đóng gói tệp ZIP để tải xuống
+- Ba chế độ ánh xạ độ dày phông chữ có thể lựa chọn
+- Tương thích với Safari mobile, chuyển đổi nền không bị gián đoạn
+- Giao diện đen trắng cực đơn giản, nhật ký kiểu dòng lệnh
 
 ## 一键部署
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhuami1314%2FiFont)
 
-## 使用方法
+## Hướng dẫn sử dụng
 
-1. 打开页面，上传自定义字体文件
-2. 选择字重映射模式
-3. 点击 START，等待转换完成
-4. 下载生成的 TTC 文件，导入 iOS 设备
+1. Mở trang và tải lên tệp phông chữ tùy chỉnh của bạn
+2. Chọn chế độ ánh xạ độ dày phông chữ
+3. Nhấp vào BẮT ĐẦU và chờ quá trình chuyển đổi hoàn thành
+4. Tải xuống tệp TTC được tạo và nhập vào thiết bị iOS
 
-## 联系
+## Liên hệ
 
 - Telegram: [@huamidev](https://t.me/huamidev)
-- 公众号: 一只huami
+- WeChat Official: Một huami
 
-## License
+## Giấy phép
 
 © 2026 @huamidev
