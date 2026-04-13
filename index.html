@@ -143,7 +143,7 @@ body { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif; 
         <i class="fa-brands fa-telegram"></i>
         huamidev
       </a>
-      <a href="javascript:void(0)" id="wx-link">
+      <a href="https://mp.weixin.qq.com/s/Dpla77D9ggSuMgQTj6ZUNA" target="_blank">
         <i class="fa-brands fa-weixin"></i>
         一只huami
       </a>
@@ -153,17 +153,6 @@ body { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif; 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
-document.getElementById('wx-link').addEventListener('click', function() {
-  var mpUrl = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzYzOTc5MzgwNw==&scene=124';
-  var isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-  if (isMobile) {
-    window.location.href = 'weixin://jumpurl/' + mpUrl;
-    setTimeout(function() { window.open(mpUrl, '_blank'); }, 2000);
-  } else {
-    window.open(mpUrl, '_blank');
-  }
-});
-
 let srcFiles = [];
 let resultBlobs = [];
 let worker = null;
