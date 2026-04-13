@@ -87,37 +87,37 @@ body { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif; 
 <div class="container">
   <div class="header">
     <h1>iFont</h1>
-    <p class="desc">纯本地 iOS 18~26 字体转换引擎<br>支持 TTF / OTF / TTC 批量转换</p>
+    <p class="desc">Công cụ chuyển đổi phông chữ iOS 18~26 hoàn toàn cục bộ<br>Hỗ trợ chuyển đổi hàng loạt TTF / OTF / TTC</p>
   </div>
 
   <div class="upload-section">
     <div class="upload-box" id="src-box">
-      <div class="title">加载源字体</div>
-      <div class="hint">选取你的自定义字体 (支持多选)</div>
+      <div class="title">Tải phông chữ nguồn</div>
+      <div class="hint">Chọn phông chữ tùy chỉnh của bạn (hỗ trợ chọn nhiều)</div>
       <input type="file" id="src-input" accept=".ttf,.otf,.ttc,.TTF,.OTF,.TTC" multiple>
       <div class="file-info" id="src-info"></div>
     </div>
   </div>
 
   <div class="mode-section" id="mode-section">
-    <div class="mode-title">选择映射配置</div>
+    <div class="mode-title">Chọn cấu hình ánh xạ</div>
     <div class="mode-options">
       <label class="mode-label">
         <input type="radio" name="weight-mode" value="single" checked>
-        <span class="mode-text">全局统配<br><small>(全部使用常规体)</small></span>
+        <span class="mode-text">Phù hợp toàn cầu<br><small>(Sử dụng kiểu thông thường cho tất cả)</small></span>
       </label>
       <label class="mode-label">
         <input type="radio" name="weight-mode" value="dual">
-        <span class="mode-text">粗细分离<br><small>(区分常规与中黑)</small></span>
+        <span class="mode-text">Tách độ dày<br><small>(Phân biệt thường xuyên và đen vừa)</small></span>
       </label>
       <label class="mode-label">
         <input type="radio" name="weight-mode" value="triple">
-        <span class="mode-text">三阶层次<br><small>(细/常/粗组合)</small></span>
+        <span class="mode-text">Ba chuỗi<br><small>(Kết hợp mỏng/thường/dày)</small></span>
       </label>
     </div>
   </div>
 
-  <button class="convert-btn" id="convert-btn" disabled>START</button>
+  <button class="convert-btn" id="convert-btn" disabled>BẮT ĐẦU</button>
 
   <div class="progress-wrap" id="progress-wrap">
     <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
@@ -129,7 +129,7 @@ body { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif; 
 
   <div class="results" id="results"></div>
   <div class="dl-all-wrap" id="dl-all-wrap">
-    <button class="dl-all-btn" id="dl-all-btn">下载全部</button>
+    <button class="dl-all-btn" id="dl-all-btn">Tải xuống tất cả</button>
   </div>
 
   <div class="footer">
@@ -145,7 +145,7 @@ body { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif; 
       </a>
       <a href="https://mp.weixin.qq.com/s/Dpla77D9ggSuMgQTj6ZUNA" target="_blank">
         <i class="fa-brands fa-weixin"></i>
-        一只huami
+        Một huami
       </a>
     </div>
   </div>
@@ -208,15 +208,15 @@ convertBtn.addEventListener('click', () => {
   progressWrap.classList.add('show');
   progressFill.style.width = '0%';
   convertBtn.classList.add('running');
-  convertBtn.innerHTML = '<span class="running-text">PROCESSING...</span>';
+  convertBtn.innerHTML = '<span class=\"running-text\">ĐANG XỬ LÝ...</span>';
 
   if (worker) worker.terminate();
   worker = new Worker('worker.js');
 
   worker.onerror = e => {
-    addLog('err', `Worker 错误: ${e.message}`);
+    addLog('err', `Lỗi Worker: ${e.message}`);
     convertBtn.classList.remove('running');
-    convertBtn.textContent = 'START';
+    convertBtn.textContent = 'BẮT ĐẦU';
   };
 
   const srcClones = srcFiles.map(f => ({ name: f.name, buffer: f.buffer.slice(0) }));
@@ -240,10 +240,10 @@ convertBtn.addEventListener('click', () => {
         addResult(msg.name, msg.buffer);
         break;
       case 'done':
-        addLog('ok', `封装流程结束`);
+        addLog('ok', `Hoàn thành quy trình đóng gói`);
         progressFill.style.width = '100%';
         convertBtn.classList.remove('running');
-        convertBtn.textContent = 'DONE';
+        convertBtn.textContent = 'XONG';
         
         if (resultBlobs.length > 1) {
           dlAllWrap.style.display = 'block';
@@ -253,7 +253,7 @@ convertBtn.addEventListener('click', () => {
       case 'error':
         addLog('err', msg.message);
         convertBtn.classList.remove('running');
-        convertBtn.textContent = 'START';
+        convertBtn.textContent = 'BẮT ĐẦU';
         checkReady();
         break;
     }
@@ -282,8 +282,8 @@ dlAllBtn.addEventListener('click', async () => {
     zip.file(b.name, b.blob);
   });
   
-  addLog('step', '正在打包 ZIP...');
-  dlAllBtn.textContent = '打包中...';
+  addLog('step', 'Đang đóng gói ZIP...');
+  dlAllBtn.textContent = 'Đang đóng gói...';
   dlAllBtn.disabled = true;
   
   try {
@@ -292,12 +292,12 @@ dlAllBtn.addEventListener('click', async () => {
     a.href = URL.createObjectURL(content);
     a.download = `FontForge_iOS_${Date.now()}.zip`;
     a.click();
-    addLog('ok', 'ZIP 打包下载完成');
+    addLog('ok', 'Tải ZIP ngành đóng gói hoàn tất');
   } catch (e) {
-    addLog('err', 'ZIP 打包失败: ' + e.message);
+    addLog('err', 'Lỗi đóng gói ZIP: ' + e.message);
   }
   
-  dlAllBtn.textContent = '下载全部';
+  dlAllBtn.textContent = 'Tải xuống tất cả';
   dlAllBtn.disabled = false;
 });
 </script>
